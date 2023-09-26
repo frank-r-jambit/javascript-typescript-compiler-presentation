@@ -4,12 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npx putout src"
+    "start": "pnpm dlx jscodeshift -t transformers/remove-logs.js example.js "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "putout": "^32.0.6"
-  }
+  "devDependencies": {}
 }
