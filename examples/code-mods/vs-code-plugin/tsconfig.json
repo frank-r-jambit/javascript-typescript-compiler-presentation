@@ -3,7 +3,8 @@
     "target": "ES6",
     "outDir": "./out",
     "rootDir": "./src",
-    "strict": true
+    "strict": true,
+    "moduleResolution": "Node"
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "out"]
