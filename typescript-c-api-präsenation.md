@@ -122,7 +122,7 @@ Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versio
 
 - Die Compiler API ermöglicht Code-Transformationen und Refactoring.
 - Manipulieren Sie den AST, um den Code automatisch anzupassen.
-- Beispiel: Entfernen von unnötigem Code
+  [Beispiel: Logs im Quellcode entfernen.](./examples/code-transformations/README.md)
 
 ---
 

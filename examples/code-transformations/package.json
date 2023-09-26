@@ -1,16 +1,18 @@
 {
-  "name": "code-transformation",
+  "name": "code-transformations",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "pnpm dlx jscodeshift -t transformers/remove-logs.js example.js "
+    "start": "babel example.js --out-file compiled.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.23.0",
     "@babel/core": "^7.23.0",
-    "@babel/preset-env": "^7.22.20"
+    "@babel/preset-env": "^7.22.20",
+    "babel-cli": "^6.26.0"
   }
 }
