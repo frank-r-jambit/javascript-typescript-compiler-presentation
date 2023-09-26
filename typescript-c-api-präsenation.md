@@ -190,12 +190,7 @@ https://github.com/coderaiser/putout
 
 ## "Erfolgsgeschichten"
 
-- Check24 Wireframe
-
-  - parsen der HTML struktur nach "script" -Tags via "document.querySelector"
-  - html divs markieren mit ids
-  - react portals erzeugen die diese ids als container nutzen
-  - react komponenten html/javascript/css generieren
+- [Check24 Wireframe](./examples//wireframe/README.md)
 
 - Habt ihr welche zu teilen?
 
