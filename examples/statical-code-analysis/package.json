@@ -1,0 +1,19 @@
+{
+  "name": "statical-code-analysis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "eslint example.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/eslint-parser": "^7.22.15",
+    "@babel/preset-env": "^7.22.20",
+    "eslint": "^8.50.0",
+    "eslint-plugin-local-rules": "^2.0.0"
+  }
+}

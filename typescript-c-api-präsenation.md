@@ -3,7 +3,7 @@
 ## Einleitung / Agenda
 
 - Ziel des Vortrags
-
+- Begriffsdefinition
 - compilers / lexer / parser
 - ASTs
 - beispiel - ast-explorer
@@ -18,6 +18,10 @@
 - offene Fragen
 
 - quellen
+
+## Ziel
+
+Einblick und Überblick in Compiler und erstellen eigener Tools
 
 ## Begriffsdefinition / Grundlagen
 
@@ -133,6 +137,12 @@ Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versio
 - Extrahieren Sie JSDoc-Kommentare, um nützliche Dokumentation für Module, Klassen und Funktionen zu erstellen.
 - Beispiel: Generierung von JSDoc-basierten Dokumentationskommentaren.
 
+<!--
+
+Genutztes Tool:
+https://github.com/coderaiser/putout
+[Beispiele verschiedener Plugin Variationen](https://github.com/coderaiser/putout/tree/master/packages/engine-runner) -->
+
 ---
 
 ### Typüberprüfung und -manipulation
@@ -165,6 +175,14 @@ https://github.com/facebook/jscodeshift
 
 ---
 
+## "Erfolgsgeschichten"
+
+- Check24 Wireframe
+  - parsen der HTML struktur nach "script" -Tags via "document.querySelector"
+- [tdi](https://github.com/7frank/tdi) "Java Spring" - like auto wiring for dependency injection
+- [gui-builder](https://github.com/7frank/gui-builder) geniereren von adapter code zwischen grapesjs und svelte Komponenten
+- Habt ihr welche zu teilen?
+
 ## Zusammenfassung
 
 - Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug zur Anpassung und Erweiterung der TypeScript-Entwicklung.
@@ -178,8 +196,6 @@ https://github.com/facebook/jscodeshift
 - Haben Sie Fragen oder möchten Sie weitere Informationen zu einem der vorgestellten Anwendungsfälle?
 - Wir stehen zur Verfügung, um Ihre Fragen zu beantworten und weitere Diskussionen zu führen.
 
-<!--
+## Quellen & Tools
 
-Genutztes Tool:
-https://github.com/coderaiser/putout
-[Beispiele verschiedener Plugin Variationen](https://github.com/coderaiser/putout/tree/master/packages/engine-runner) -->
+[Tools](./resources.md)
