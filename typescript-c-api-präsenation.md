@@ -144,6 +144,20 @@ https://github.com/facebook/jscodeshift
 
 ---
 
+### Typüberprüfung und -manipulation
+
+- TypeScript bietet starke Typisierung und Sicherheit.
+- Die Compiler API ermöglicht die Typüberprüfung und -manipulation.
+- Ändern Sie Typen, fügen Sie Typinformationen hinzu und passen Sie Typüberprüfungen an.
+
+- [tdi](https://github.com/7frank/tdi) "Java Spring" - like auto wiring for dependency injection
+  - Tool "ttypescript"
+- [gui-builder](https://github.com/7frank/gui-builder) geniereren von adapter
+  - code zwischen grapesjs und svelte Komponenten
+  - Tool: ts-patch
+
+---
+
 ### Dokumentationserzeugung
 
 - Gute Dokumentation ist entscheidend für die Zusammenarbeit in Teams.
@@ -156,15 +170,6 @@ https://github.com/facebook/jscodeshift
 Genutztes Tool:
 https://github.com/coderaiser/putout
 [Beispiele verschiedener Plugin Variationen](https://github.com/coderaiser/putout/tree/master/packages/engine-runner) -->
-
----
-
-### Typüberprüfung und -manipulation
-
-- TypeScript bietet starke Typisierung und Sicherheit.
-- Die Compiler API ermöglicht die Typüberprüfung und -manipulation.
-- Ändern Sie Typen, fügen Sie Typinformationen hinzu und passen Sie Typüberprüfungen an.
-- Beispiel: Ändern des Typs einer Variable und Hinzufügen einer benutzerdefinierten Typüberprüfung.
 
 ---
 
@@ -182,9 +187,12 @@ https://github.com/coderaiser/putout
 ## "Erfolgsgeschichten"
 
 - Check24 Wireframe
+
   - parsen der HTML struktur nach "script" -Tags via "document.querySelector"
-- [tdi](https://github.com/7frank/tdi) "Java Spring" - like auto wiring for dependency injection
-- [gui-builder](https://github.com/7frank/gui-builder) geniereren von adapter code zwischen grapesjs und svelte Komponenten
+  - html divs markieren mit ids
+  - react portals erzeugen die diese ids als container nutzen
+  - react komponenten html/javascript/css generieren
+
 - Habt ihr welche zu teilen?
 
 ## Zusammenfassung
