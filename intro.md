@@ -1,10 +1,8 @@
-#
+# typescript compiler api
 
-list of typescriopt cpompilers
+- list of typescript compilers
 
 - https://github.com/JohnDeved/awesome-typescript-compilers
-
-# typescript compiler api
 
 Die TypeScript Compiler API ermöglicht es Entwicklern, TypeScript-Code statisch zu analysieren, zu verändern und zu generieren. Mit dieser API können Sie eine Vielzahl von Aufgaben rund um TypeScript-Code automatisieren und erweiterte Code-Analyse- und Refactoring-Funktionen implementieren. Hier sind einige der Hauptanwendungen der TypeScript Compiler API:
 
