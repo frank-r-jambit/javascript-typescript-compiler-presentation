@@ -191,6 +191,7 @@ https://github.com/coderaiser/putout
 ## "Erfolgsgeschichten"
 
 - [Check24 Wireframe](./examples//wireframe/README.md)
+- treeshaking via direkte importe
 
 - Habt ihr welche zu teilen?
 
