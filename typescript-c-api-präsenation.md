@@ -21,7 +21,11 @@
 
 ## Ziel
 
-Einblick und Überblick in Compiler und erstellen eigener Tools
+- Einblick und Überblick in Compiler und erstellen eigener Tools
+
+- Disclaimer:
+  - Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem so volatil ist, daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele die zunächst auch über andere Tools vielleicht sogar einfacher umgesetzt werden könnten, aber zielt zunächst darauf einfach zugänglich zu sein.
+  - Der zweite Teil geht dann ein wenig tiefer auf Beispiele ein, die sich mit anderen Mitteln (sed / regex replace, und co. schwerer abbilden lassen)
 
 ## Begriffsdefinition / Grundlagen
 
