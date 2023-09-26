@@ -113,20 +113,34 @@ Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versio
 
 ## Anwendungsszenarien
 
-### Statische Codeanalyse
+Im foglenden werden diverse Beispiele gezeigt. Viele der verwendeten Tools haben ähnliche Funktionalität und die Beispiele könnten auf die ein oder andere Weise ähnlich umgesetzt werden.
+
+### Code-Transformationen mit Babel
+
+- Die Compiler API ermöglicht Code-Transformationen und Refactoring.
+- Manipulieren Sie den AST, um den Code automatisch anzupassen.
+- [Beispiel: Logs im Quellcode entfernen.](./examples/code-transformations/README.md)
+
+---
+
+### Code Mods mit jsCodeshift
+
+- Code Mods sind automatisierte Code-Änderungen und Refactoring.
+- Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug für Code Mods.
+- Automatisieren Sie Aufgaben wie das Aktualisieren von API-Aufrufen oder das Anpassen an Codestandards.
+
+Genutztes Tool:
+https://github.com/facebook/jscodeshift
+[Beispiel: Logs im Quellcode entfernen.](./examples/code-mods/README.md)
+
+---
+
+### Statische Codeanalyse mit eslint
 
 - Statische Codeanalyse ist ein wichtiger Bestandteil der Softwareentwicklung.
 - Die TypeScript Compiler API ermöglicht die statische Analyse von TypeScript-Code.
 - Durchsuchen Sie den Abstract Syntax Tree (AST), um Code-Metriken, Abhängigkeiten und mehr zu analysieren.
-- Beispiel: Identifizierung nicht verwendeter Importanweisungen.
-
----
-
-### Code-Transformationen
-
-- Die Compiler API ermöglicht Code-Transformationen und Refactoring.
-- Manipulieren Sie den AST, um den Code automatisch anzupassen.
-  [Beispiel: Logs im Quellcode entfernen.](./examples/code-transformations/README.md)
+- [Beispiel: Logs im Quellcode entfernen.](./examples/statical-code-analysis/README.md)
 
 ---
 
@@ -153,16 +167,6 @@ https://github.com/coderaiser/putout
 - Beispiel: Ändern des Typs einer Variable und Hinzufügen einer benutzerdefinierten Typüberprüfung.
 
 ---
-
-### Code Mods
-
-- Code Mods sind automatisierte Code-Änderungen und Refactoring.
-- Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug für Code Mods.
-- Automatisieren Sie Aufgaben wie das Aktualisieren von API-Aufrufen oder das Anpassen an Codestandards.
-
-Genutztes Tool:
-https://github.com/facebook/jscodeshift
-[Beispiel: Logs im Quellcode entfernen.](./examples/code-mods/README.md)
 
 ---
 
