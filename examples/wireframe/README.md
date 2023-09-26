@@ -1,13 +1,12 @@
 # C24 Wireframe
 
-- compiled javascript that has to be included into every c24 product on their own / keine möglichkeit den source code selbst zu verändern
-- da sich der code jeden tag updaten könnte, haben wir einen compile step eingeführt
-  - html divs markieren mit ids
-  - react portals erzeugen die diese ids als container nutzen
-  - react komponenten html/javascript/css generieren
-- babel & cheerio als preprocessor zum parsen der HTML struktur nach "script" -Tags via "cheerio"
-
-  - babel plugins kamen für folgendes zum einsatz
-  - DomContentLoaded event listeners ersetzen mit eigenen listenern
-  - ersetzen der login funktionalität
-  - weitere plugins könnten weitere teilfunktionalität konfigurierbar machen
+- Kompiliertes JavaScript, das in jedes C24-Produkt integriert werden muss, ohne die Möglichkeit, den Quellcode selbst zu ändern.
+- Aufgrund der täglichen Code-Updates wurde ein Kompilierungsschritt eingeführt, der folgende Schritte umfasst:
+  - Markieren von HTML-Divs mit IDs.
+  - Erzeugen von React-Portalen, die diese IDs als Container verwenden.
+  - Generieren von React-Komponenten für HTML, JavaScript und CSS.
+- Verwendung von Babel und Cheerio als Preprocessor zum Parsen der HTML-Struktur nach "script"-Tags mithilfe von "cheerio".
+  - Einsatz von Babel-Plugins für die folgenden Aufgaben:
+    - Ersetzen von "DOMContentLoaded" Event-Listenern durch eigene Listener.
+    - Ersetzen der Login-Funktionalität.
+    - Weitere Plugins könnten zusätzliche teilweise konfigurierbare Funktionen hinzufügen.
