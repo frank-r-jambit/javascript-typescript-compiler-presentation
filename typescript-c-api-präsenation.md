@@ -124,10 +124,6 @@ Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versio
 - Manipulieren Sie den AST, um den Code automatisch anzupassen.
 - Beispiel: Entfernen von unnötigem Code
 
-Genutztes Tool:
-https://github.com/coderaiser/putout
-[Beisppiele verschiedener Plugin Variationen](https://github.com/coderaiser/putout/tree/master/packages/engine-runner)
-
 ---
 
 ### Dokumentationserzeugung
@@ -153,7 +149,10 @@ https://github.com/coderaiser/putout
 - Code Mods sind automatisierte Code-Änderungen und Refactoring.
 - Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug für Code Mods.
 - Automatisieren Sie Aufgaben wie das Aktualisieren von API-Aufrufen oder das Anpassen an Codestandards.
-- Beispiel: Automatische Code-Änderungen in einer Codebase.
+
+Genutztes Tool:
+https://github.com/facebook/jscodeshift
+[Beispiel: Logs im Quellcode entfernen.](./examples/code-mods/README.md)
 
 ---
 
@@ -178,3 +177,9 @@ https://github.com/coderaiser/putout
 
 - Haben Sie Fragen oder möchten Sie weitere Informationen zu einem der vorgestellten Anwendungsfälle?
 - Wir stehen zur Verfügung, um Ihre Fragen zu beantworten und weitere Diskussionen zu führen.
+
+<!--
+
+Genutztes Tool:
+https://github.com/coderaiser/putout
+[Beispiele verschiedener Plugin Variationen](https://github.com/coderaiser/putout/tree/master/packages/engine-runner) -->
