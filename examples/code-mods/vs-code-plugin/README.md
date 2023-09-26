@@ -23,7 +23,7 @@ Schritt 8: Verwenden Sie Ihre Erweiterung
 
     Navigieren Sie im Terminal oder in der Eingabeaufforderung in das Verzeichnis Ihres Projekts, in dem sich die Erweiterung befindet.
 
-    Verpacken Sie Ihre Erweiterung in eine VSIX-Datei mit dem Befehl vsce package. Stellen Sie sicher, dass Sie das vsce-Tool installiert haben. Sie können es mit npm install -g vsce installieren.
+    Verpacken Sie Ihre Erweiterung in eine VSIX-Datei mit dem Befehl vsce package. Stellen Sie sicher, dass Sie das vsce-Tool installiert haben. Sie können es mit pnpm install --global @vscode/vsceinstallieren.
 
 bash
 
