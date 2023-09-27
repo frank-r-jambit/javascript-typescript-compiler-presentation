@@ -3,12 +3,15 @@
 ## Einleitung / Agenda
 
 - Ziel des Vortrags
-- Begriffsdefinition
+- Begriffsdefinitionen / Grundlagen
 - Abstract Syntax Trees
   - Babel
   - Typescript Compiler API
   - Weitere Beispiele
-- Anwendungsbeispiele
+- Anwendungsszenarien
+  - Babel
+  - jscodeshift
+  - eslint
 - Q&A
 
 ## Ziel
@@ -19,7 +22,7 @@
 
 Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem sehr volatil ist. Daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele welche auch über andere Tools, vielleicht sogar einfacher, umgesetzt werden könnten, zielt dabei auf Zugänglichkeit. Gegen Ende besprechen wir noch ein paar Beispiele die tiefer in die Materie eingehen.
 
-## Begriffsdefinition / Grundlagen
+## Begriffsdefinitionen / Grundlagen
 
 <figure>
 
