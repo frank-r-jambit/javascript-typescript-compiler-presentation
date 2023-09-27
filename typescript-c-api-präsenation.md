@@ -13,24 +13,32 @@
 
 ## Ziel
 
-- Einblick und Überblick in Compiler und erstellen eigener Tools
+- <b>Einblick und Überblick in Compiler und erstellen eigener Tools</b>
 
-- Disclaimer:
-  Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem sehr volatil ist. Daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele welche auch über andere Tools, vielleicht sogar einfacher, umgesetzt werden könnten, zielt dabei auf Zugänglichkeit. Gegen Ende besprechen wir noch ein paar Beispiele die tiefer in die Materie eingehen.
+## Disclaimer
+
+Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem sehr volatil ist. Daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele welche auch über andere Tools, vielleicht sogar einfacher, umgesetzt werden könnten, zielt dabei auf Zugänglichkeit. Gegen Ende besprechen wir noch ein paar Beispiele die tiefer in die Materie eingehen.
 
 ## Begriffsdefinition / Grundlagen
 
 ### Sprache:
 
-        In unserem Fall bezieht sich die "Sprache" auf die Programmiersprache, in der unser Quellcode geschrieben ist. Es handelt sich um die formale oder strukturierte Methode, mit der Entwickler Anweisungen und Befehle formulieren, um Computerprogramme zu erstellen.
-        Jede Programmiersprache hat ihre eigenen Regeln und Konventionen, die bestimmen, wie der Code geschrieben werden sollte. Diese Regeln sind Teil der Sprache, und ein Compiler oder Interpreter muss sie verstehen, um den Code korrekt zu verarbeiten.
+> In unserem Fall bezieht sich die "Sprache" auf die Programmiersprache, in der unser Quellcode geschrieben ist. Es handelt sich um die formale oder strukturierte Methode, mit der Entwickler Anweisungen und Befehle formulieren, um Computerprogramme zu erstellen.
+> Jede Programmiersprache hat ihre eigenen Regeln und Konventionen, die bestimmen, wie der Code geschrieben werden sollte. Diese Regeln sind Teil der Sprache, und ein Compiler oder Interpreter muss sie verstehen, um den Code korrekt zu verarbeiten.
 
 ### Grammatik (Syntax):
 
-        Die "Grammatik" oder "Syntax" einer Programmiersprache bezieht sich auf die strukturellen Regeln, die festlegen, wie gültige Anweisungen und Ausdrücke in dieser Sprache aussehen sollten. Die Grammatik definiert, wie Token in bestimmten Reihenfolgen kombiniert werden können, um sinnvolle Codeabschnitte zu erstellen.
-        Die Grammatik einer Sprache wird normalerweise durch eine formale BNF (Backus-Naur-Form) oder eine ähnliche Notation beschrieben. Diese Regeln sind entscheidend für den Parser, um den Code zu analysieren und einen abstrakten Syntaxbaum (AST) zu erstellen.
+> Die "Grammatik" oder "Syntax" einer Programmiersprache bezieht sich auf die strukturellen Regeln, die festlegen, wie gültige Anweisungen und Ausdrücke in dieser Sprache aussehen sollten. Die Grammatik definiert, wie Token in bestimmten Reihenfolgen kombiniert werden können, um sinnvolle Codeabschnitte zu erstellen.
+> Die Grammatik einer Sprache wird normalerweise durch eine formale BNF (Backus-Naur-Form) oder eine ähnliche Notation beschrieben. Diese Regeln sind entscheidend für den Parser, um den Code zu analysieren und einen abstrakten Syntaxbaum (AST) zu erstellen.
 
-![Einfacher Grammatik in BNF](https://wikimedia.org/api/rest_v1/media/math/render/svg/bbb0b76c69a5acef99da619f0623e4114c5a5eb4)
+<figure>
+
+![Einfache Grammatik in BNF](https://wikimedia.org/api/rest_v1/media/math/render/svg/bbb0b76c69a5acef99da619f0623e4114c5a5eb4)
+
+  <figcaption>Beispiel einer einfachen Grammatik in BNF</figcaption>
+</figure>
+
+<figure>
 
 ```bnf
 Sentence ::= Subject Predicate Object '.'
@@ -41,6 +49,9 @@ Article ::= 'der' | 'die' | 'das' | 'ein' | 'eine'
 Noun ::= 'Mann' | 'Frau' | 'Hund' | 'Katze' | 'Auto' | ...
 Verb ::= 'läuft' | 'isst' | 'trinkt' | 'fährt' | ...
 ```
+
+  <figcaption>Ein Teil der deutschen Grammatik in BNF</figcaption>
+</figure>
 
 Valide Sätze der obigen Grammatik:
 
@@ -53,11 +64,16 @@ aber nicht:
 
 ### Compiler:
 
+> Ein Compiler ist ein Programm, das den Quellcode einer höheren Programmiersprache in eine maschinenlesbare Form übersetzt, oft in Maschinencode oder eine andere Zwischensprache. Der Compiler führt typische Aufgaben wie Codeanalyse, Optimierung und Codegenerierung durch.
+
+<figure>
+
 ![typische Bausteine eines Compilers](https://it1.pages.fh-aachen.de/compiler/img/CompilerAblauf.svg)
 
-    Ein Compiler ist ein Programm, das den Quellcode einer höheren Programmiersprache in eine maschinenlesbare Form übersetzt, oft in Maschinencode oder eine andere Zwischensprache. Der Compiler führt typische Aufgaben wie Codeanalyse, Optimierung und Codegenerierung durch.
+  <figcaption>Häufige Bausteine eines Compilers</figcaption>
+</figure>
 
-Ein einfaches [React - Typescript Beispiel](https://www.typescriptlang.org/play?target=0&moduleResolution=99&module=2#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wCgB6cuAUWADtN0ALJAZ0WJgFoAVATzBIAymijAw8LnABCSYKzDAkAG1KkkAD0iw4pTAFc6GYBDpwA4kSQwAFHRQgkALjisYYugHMAlHADepHBwRDD6UGYAPAB8ABIoysoQADRwACR+9o4AvgCEEeRRpFlqBkYwJmaeVraZzq7u9D4uAG4QwAAm-oFwaKasEMpIAHSJnjYABnEJyWkZDki5494A3EVqQA):
+#### Ein einfaches [React - Typescript Beispiel](https://www.typescriptlang.org/play?target=0&moduleResolution=99&module=2#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wCgB6cuAUWADtN0ALJAZ0WJgFoAVATzBIAymijAw8LnABCSYKzDAkAG1KkkAD0iw4pTAFc6GYBDpwA4kSQwAFHRQgkALjisYYugHMAlHADepHBwRDD6UGYAPAB8ABIoysoQADRwACR+9o4AvgCEEeRRpFlqBkYwJmaeVraZzq7u9D4uAG4QwAAm-oFwaKasEMpIAHSJnjYABnEJyWkZDki5494A3EVqQA):
 
 ```typescript
 import React from "react";
@@ -71,7 +87,10 @@ function greet(name: string): void {
 }
 ```
 
-Das selbe Beispiel kompiliert nach ES3 / CommonJS.
+- Der Quellcode enthält eine React - Functional Component, welche die [JSX Notation](https://legacy.reactjs.org/docs/jsx-in-depth.html) verwendet
+- Sowie eine Methode die [Template literals](https://wiki.selfhtml.org/wiki/JavaScript/Objekte/String/template-literal) nutzt welche mit ECMAscript 6 eingeführt wurde.
+
+#### Das selbe Beispiel kompiliert nach ES3 / CommonJS.
 
 ```javascript
 "use strict";
@@ -99,7 +118,9 @@ function greet(name) {
 }
 ```
 
-Das selbe Beispiel kompiliert nach ES3 / AMD
+- ECMAScript 3 kennt kein keyword `exports`. Die [Option "Modules"](https://www.typescriptlang.org/tsconfig#module) in einer tsconfig.json bewirkt daher, dass der Compiler den Code mit der [Module Resolution Strategie](https://www.typescriptlang.org/docs/handbook/module-resolution.html) Commonjs kompiliert.
+
+#### Das selbe Beispiel kompiliert nach ES3 / AMD
 
 ```javascript
 var __importDefault =
