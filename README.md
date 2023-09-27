@@ -14,13 +14,11 @@
   - eslint
 - Q&A
 
+**Disclaimer:** Aufgrund der Volatilität im Ökosystem habe ich Schwierigkeiten gehabt, den Fokus dieses Vortrags festzulegen. Daher besteht der erste Teil des Vortrags aus Grundlagen und einfachen Beispielen, die möglicherweise auch mit anderen Tools, vielleicht sogar einfacher, umgesetzt werden könnten. Dieser Ansatz ist auf Zugänglichkeit ausgerichtet. Gegen Ende des Vortrags werden wir einige tiefere Beispiele besprechen.
+
 ## Ziel
 
 - <b>Einblick und Überblick in Compiler und erstellen eigener Tools</b>
-
-## Disclaimer
-
-Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem sehr volatil ist. Daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele welche auch über andere Tools, vielleicht sogar einfacher, umgesetzt werden könnten, zielt dabei auf Zugänglichkeit. Gegen Ende besprechen wir noch ein paar Beispiele die tiefer in die Materie eingehen.
 
 ## Begriffsdefinitionen / Grundlagen
 
@@ -33,13 +31,11 @@ Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem s
 
 ### Sprache:
 
-> In unserem Fall bezieht sich die "Sprache" auf die Programmiersprache, in der unser Quellcode geschrieben ist. Es handelt sich um die formale oder strukturierte Methode, mit der Entwickler Anweisungen und Befehle formulieren, um Computerprogramme zu erstellen.
-> Jede Programmiersprache hat ihre eigenen Regeln und Konventionen, die bestimmen, wie der Code geschrieben werden sollte. Diese Regeln sind Teil der Sprache, und ein Compiler oder Interpreter muss sie verstehen, um den Code korrekt zu verarbeiten.
+> In folgenden bezieht sich die "Sprache" auf die Programmiersprache, in der unser Quellcode geschrieben ist. Es handelt sich um die formale oder strukturierte Methode, mit der Entwickler Anweisungen und Befehle formulieren, um Computerprogramme zu erstellen. Jede Programmiersprache hat ihre eigenen Regeln und Konventionen, die bestimmen, wie der Code geschrieben werden sollte. Diese Regeln sind Teil der Sprache, und ein Compiler oder Interpreter muss sie verstehen, um den Code korrekt zu verarbeiten.
 
-### Grammatik (Syntax):
+### Grammatik:
 
-> Die "Grammatik" oder "Syntax" einer Programmiersprache bezieht sich auf die strukturellen Regeln, die festlegen, wie gültige Anweisungen und Ausdrücke in dieser Sprache aussehen sollten. Die Grammatik definiert, wie Token in bestimmten Reihenfolgen kombiniert werden können, um sinnvolle Codeabschnitte zu erstellen.
-> Die Grammatik einer Sprache wird normalerweise durch eine formale BNF (Backus-Naur-Form) oder eine ähnliche Notation beschrieben. Diese Regeln sind entscheidend für den Parser, um den Code zu analysieren und einen abstrakten Syntaxbaum (AST) zu erstellen.
+> Die "Grammatik" oder "Syntax" einer Programmiersprache bezieht sich auf die strukturellen Regeln, die festlegen, wie gültige Anweisungen und Ausdrücke in dieser Sprache aussehen sollten. Die Grammatik definiert, wie Token in bestimmten Reihenfolgen kombiniert werden können, um sinnvolle Codeabschnitte zu erstellen. Die Grammatik einer Sprache wird normalerweise durch eine formale BNF (Backus-Naur-Form) oder eine ähnliche Notation beschrieben. Diese Regeln sind entscheidend für den Parser, um den Code zu analysieren und einen abstrakten Syntaxbaum (AST) zu erstellen.
 
 <figure>
 
