@@ -4,43 +4,39 @@
 
 - Ziel des Vortrags
 - Begriffsdefinition
-- compilers / lexer / parser
-- ASTs
-- beispiel - ast-explorer
-
-- typescript compilers
-
-  - babel
-  - typescript / others
-
-- beispiele für verschiedene sektionen
-
-- offene Fragen
-
-- quellen
+- Abstract Syntax Trees
+  - Babel
+  - Typescript Compiler API
+  - Weitere Beispiele
+- Anwendungsbeispiele
+- Q&A
 
 ## Ziel
 
 - Einblick und Überblick in Compiler und erstellen eigener Tools
 
 - Disclaimer:
-  - Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem so volatil ist, daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele die zunächst auch über andere Tools vielleicht sogar einfacher umgesetzt werden könnten, aber zielt zunächst darauf einfach zugänglich zu sein.
-  - Der zweite Teil geht dann ein wenig tiefer auf Beispiele ein, die sich mit anderen Mitteln (sed / regex replace, und co. schwerer abbilden lassen)
+  Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem so volatil ist, daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele die zunächst auch über andere Tools vielleicht sogar einfacher umgesetzt werden könnten, zielt zunächst darauf zugänglich zu sein. Später kommen besprehcen wir noch ein paar Beispiele die ein wenig tiefer in die Materie eingehen.
 
 ## Begriffsdefinition / Grundlagen
 
-![typische Bausteine eines Compilers](https://faouellet.github.io/assets/img/Frontend3.png)
+### Sprache:
 
-    Sprache:
         In diesem Zusammenhang bezieht sich die "Sprache" auf die Programmiersprache, in der der Quellcode geschrieben ist. Es handelt sich um die formale oder strukturierte Methode, mit der Entwickler Anweisungen und Befehle formulieren, um Computerprogramme zu erstellen.
         Jede Programmiersprache hat ihre eigenen Regeln und Konventionen, die bestimmen, wie der Code geschrieben werden sollte. Diese Regeln sind Teil der Sprache, und ein Compiler oder Interpreter muss sie verstehen, um den Code korrekt zu verarbeiten.
 
-    Grammatik (Syntax):
+### Grammatik (Syntax):
+
         Die "Grammatik" oder "Syntax" einer Programmiersprache bezieht sich auf die strukturellen Regeln, die festlegen, wie gültige Anweisungen und Ausdrücke in dieser Sprache aussehen sollten. Die Grammatik definiert, wie Token in bestimmten Reihenfolgen kombiniert werden können, um sinnvolle Codeabschnitte zu erstellen.
         Die Grammatik einer Sprache wird normalerweise durch eine formale BNF (Backus-Naur-Form) oder eine ähnliche Notation beschrieben. Diese Regeln sind entscheidend für den Parser, um den Code zu analysieren und einen abstrakten Syntaxbaum (AST) zu erstellen.
 
-Compiler:
-Ein Compiler ist ein Programm, das den Quellcode einer höheren Programmiersprache in eine maschinenlesbare Form übersetzt, oft in Maschinencode oder eine andere Zwischensprache. Der Compiler führt typische Aufgaben wie Codeanalyse, Optimierung und Codegenerierung durch.
+![Einfacher Grammatik in BNF](https://wikimedia.org/api/rest_v1/media/math/render/svg/bbb0b76c69a5acef99da619f0623e4114c5a5eb4)
+
+### Compiler:
+
+![typische Bausteine eines Compilers](https://it1.pages.fh-aachen.de/compiler/img/CompilerAblauf.svg)
+
+    Ein Compiler ist ein Programm, das den Quellcode einer höheren Programmiersprache in eine maschinenlesbare Form übersetzt, oft in Maschinencode oder eine andere Zwischensprache. Der Compiler führt typische Aufgaben wie Codeanalyse, Optimierung und Codegenerierung durch.
 
 ```typescript
 // Einfaches TypeScript-Programm
@@ -53,9 +49,10 @@ function greet(name: string): void {
 greet("John");
 ```
 
-Lexer (auch Tokenizer genannt):
-Ein Lexer ist der erste Schritt im Kompilierungsprozess. Er analysiert den Quellcode und zerlegt ihn in Tokens, die die kleinsten syntaktischen Einheiten darstellen. Diese Tokens werden dann an den Parser weitergegeben.
-Der Lexer erzeugt Tokens gemäß den Syntaxregeln der Sprache. Zum Beispiel werden in JavaScript Variablennamen, Gleichheitszeichen (=) und Zahlen als separate Tokens erkannt.
+### Lexer (auch Tokenizer genannt):
+
+    Ein Lexer ist der erste Schritt im Kompilierungsprozess. Er analysiert den Quellcode und zerlegt ihn in Tokens, die die kleinsten syntaktischen Einheiten darstellen. Diese Tokens werden dann an den Parser weitergegeben.
+    Der Lexer erzeugt Tokens gemäß den Syntaxregeln der Sprache. Zum Beispiel werden in JavaScript Variablennamen, Gleichheitszeichen (=) und Zahlen als separate Tokens erkannt.
 
 ```typescript
 // Einfacher Lexer für einfache arithmetische Ausdrücke
@@ -70,9 +67,10 @@ console.log(tokens); // Ausgabe: ["x", "=", "10", "+", "5"]
 ```
 
 Parser:
-Ein Parser ist der zweite Schritt im Kompilierungsprozess. Er nimmt die Tokens, die vom Lexer erstellt wurden, und analysiert die syntaktische Struktur des Codes, um einen abstrakten Syntaxbaum (AST) zu erstellen. Ein AST ( ist eine hierarchische Datenstruktur, die die syntaktische Struktur von Quellcode darstellt und von Compilern und Interpretern zur Verarbeitung und Analyse verwendet wird.
-Dieser Baum repräsentiert die hierarchische Struktur des Codes.
-Der Parser verwendet die Grammatik der Sprache, um die Tokens in eine hierarchische Struktur (AST) umzuwandeln. Die Grammatik legt fest, wie Anweisungen und Ausdrücke in der Sprache aufgebaut sein müssen, um gültig zu sein.
+
+    Ein Parser ist der zweite Schritt im Kompilierungsprozess. Er nimmt die Tokens, die vom Lexer erstellt wurden, und analysiert die syntaktische Struktur des Codes, um einen abstrakten Syntaxbaum (AST) zu erstellen. Ein AST ( ist eine hierarchische Datenstruktur, die die syntaktische Struktur von Quellcode darstellt und von Compilern und Interpretern zur Verarbeitung und Analyse verwendet wird.
+    Dieser Baum repräsentiert die hierarchische Struktur des Codes.
+    Der Parser verwendet die Grammatik der Sprache, um die Tokens in eine hierarchische Struktur (AST) umzuwandeln. Die Grammatik legt fest, wie Anweisungen und Ausdrücke in der Sprache aufgebaut sein müssen, um gültig zu sein.
 
 ```typescript
 // Einfacher Parser für eine Zuweisung
@@ -92,9 +90,29 @@ const ast = parseAssignment(tokens);
 console.log(ast); // Ausgabe: { type: "Assignment", left: "x", right: "10" }
 ```
 
-Zusammengefasst sind die Sprache und die Grammatik die grundlegenden Grundlagen, die es einem Compiler oder Interpreter ermöglichen, den Quellcode in eine ausführbare Form zu übersetzen.
+Zusammengefasst:
 
-## AST - Explorer
+Grammatiken beschreiben die Syntax von Programmiersprachen. Formale Sprachen sind die Wörter in diesen Sprachen. Compiler verwenden Grammatiken, um den Quellcode zu analysieren und in Maschinen- oder Zwischencode zu übersetzen. Grammatiken und formale Sprachen sind grundlegend für die Übersetzung von Programmcode.
+
+## Abstract Syntax Tree
+
+    Ein Abstract Syntax Tree (AST) ist eine baumartige Datenstruktur, die die syntaktische Struktur eines Programms repräsentiert. Es enthält abstrakte Informationen über die Anordnung von Codeelementen und dient als Grundlage für die Analyse und Transformation von Quellcode in Compilern und ähnlichen Anwendungen.
+
+### Typescript Compilers - Babel
+
+Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versionen übersetzt, um die Browserkompatibilität sicherzustellen. Babel verwendet Plugins für spezielle Transformationen, wie das Übersetzen von Arrow Functions, Klassen usw. Diese Plugins sind konfigurierbar und können in Build-Tools integriert werden.
+
+[Beispiel eines einfachen Plugins](https://babeljs.io/docs/plugins#plugin-development)
+
+[Beispiel im AST Explorer](https://astexplorer.net/#/gist/a8ec04ff57b47fca26bd3ac17c541501/7d34fa678aede151042b5556beff0e86e782de2c)
+
+### Typescript Compilers -Typescript Compiler API
+
+- TypeScript ist eine statisch typisierte Superset-Sprache von JavaScript.
+- Die TypeScript Compiler API ermöglicht die Anpassung und Erweiterung der Entwicklungserfahrung mit TypeScript.
+- In dieser Präsentation werden verschiedene Anwendungsfälle für die TypeScript Compiler API erläutert.
+
+### Weitere Beispiele
 
 [Beispiel Svelte](https://astexplorer.net/#/gist/29c57d16d6d16bdd1c6a3849e02da4ad/b440969e83791e4edc8b1ce6e2e11af4d23389dd)
 [Beispiel Javascript](https://astexplorer.net/#/gist/1b437b4148e95c08ae43b5e1e0420af4/32c42f1a4887ada1a48ef1eb6f3f0bdb32e54b9a)
@@ -103,21 +121,9 @@ Zusammengefasst sind die Sprache und die Grammatik die grundlegenden Grundlagen,
 
 [CSS - PostCss](https://astexplorer.net/#/gist/dcc3e0cb745ab61fc4d27ebc9175e2a4/cc29359d8e49e71359462df80dd05b0cf0627525)
 
-## Typescript Compilers - Babel
-
-Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versionen übersetzt, um die Browserkompatibilität sicherzustellen. Babel verwendet Plugins für spezielle Transformationen, wie das Übersetzen von Arrow Functions, Klassen usw. Diese Plugins sind konfigurierbar und können in Build-Tools integriert werden.
-
-[Beispiel eines einfachen Plugins:](https://babeljs.io/docs/plugins#plugin-development)
-
-## Typescript Compilers -Typescript Compiler API
-
-- TypeScript ist eine statisch typisierte Superset-Sprache von JavaScript.
-- Die TypeScript Compiler API ermöglicht die Anpassung und Erweiterung der Entwicklungserfahrung mit TypeScript.
-- In dieser Präsentation werden verschiedene Anwendungsfälle für die TypeScript Compiler API erläutert.
-
 ## Anwendungsszenarien
 
-Im foglenden werden diverse Beispiele gezeigt. Viele der verwendeten Tools haben ähnliche Funktionalität und die Beispiele könnten auf die ein oder andere Weise ähnlich umgesetzt werden.
+Im folgenden werden diverse Beispiele gezeigt. Viele der verwendeten Tools haben ähnliche Funktionalität und die Beispiele könnten auf die ein oder andere Weise ähnlich umgesetzt werden.
 
 ### Code-Transformationen mit Babel
 
