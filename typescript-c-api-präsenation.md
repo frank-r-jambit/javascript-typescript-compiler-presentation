@@ -21,6 +21,13 @@ Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem s
 
 ## Begriffsdefinition / Grundlagen
 
+<figure>
+
+![typische Bausteine eines Compilers](https://it1.pages.fh-aachen.de/compiler/img/CompilerAblauf.svg)
+
+  <figcaption>Häufige Bausteine eines Compilers die im folgenden erläutert werden.</figcaption>
+</figure>
+
 ### Sprache:
 
 > In unserem Fall bezieht sich die "Sprache" auf die Programmiersprache, in der unser Quellcode geschrieben ist. Es handelt sich um die formale oder strukturierte Methode, mit der Entwickler Anweisungen und Befehle formulieren, um Computerprogramme zu erstellen.
@@ -53,14 +60,16 @@ Verb ::= 'läuft' | 'isst' | 'trinkt' | 'fährt' | ...
   <figcaption>Ein Teil der deutschen Grammatik in BNF</figcaption>
 </figure>
 
-Valide Sätze der obigen Grammatik:
+Valide Sätze der obigen Grammatik sind:
 
 - "der Mann läuft ein Auto."
 - "die Hund fährt."
+- "die Katze isst."
 
 aber nicht:
 
 - "der Mann läuft" (Satzende-Zeichen fehlt)
+- "die Katze." (Das Objekt ist in der Grammatik nicht optional)
 
 ### Lexer (auch Tokenizer genannt):
 
@@ -80,7 +89,7 @@ const tokens = lexer(code);
 console.log(tokens); // Ausgabe: ["x", "=", "10", "+", "5"]
 ```
 
-  <figcaption>Einfacher Lexer für einfache arithmetische Ausdrücke</figcaption>
+  <figcaption>Beispiel für einen Lexer der einfache arithmetische Ausdrücke in Token zerlegt</figcaption>
 </figure>
 
 ### Parser
@@ -108,7 +117,7 @@ const ast = parseAssignment(tokens);
 console.log(ast); // Ausgabe: { type: "Assignment", left: "x", right: "10" }
 ```
 
-  <figcaption>Einfacher Parser für eine Zuweisung</figcaption>
+  <figcaption>Einfacher Parser der eine Variablenzuweisung in einen AST überführt.  Der AST besteht hierbei nur aus einem Knoten.</figcaption>
 </figure>
 
 > Unterschiedliche Parser können AST erzeugen die zueinander inkompatibel sind.
@@ -122,13 +131,6 @@ Verbreitete Parser:
 ### Compiler:
 
 > Ein Compiler ist ein Programm, das den Quellcode einer höheren Programmiersprache in eine maschinenlesbare Form übersetzt, oft in Maschinencode oder eine andere Zwischensprache. Der Compiler führt typische Aufgaben wie Codeanalyse, Optimierung und Codegenerierung durch.
-
-<figure>
-
-![typische Bausteine eines Compilers](https://it1.pages.fh-aachen.de/compiler/img/CompilerAblauf.svg)
-
-  <figcaption>Häufige Bausteine eines Compilers</figcaption>
-</figure>
 
 #### Ein einfaches [React - Typescript Beispiel](https://www.typescriptlang.org/play?target=0&moduleResolution=99&module=2#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wCgB6cuAUWADtN0ALJAZ0WJgFoAVATzBIAymijAw8LnABCSYKzDAkAG1KkkAD0iw4pTAFc6GYBDpwA4kSQwAFHRQgkALjisYYugHMAlHADepHBwRDD6UGYAPAB8ABIoysoQADRwACR+9o4AvgCEEeRRpFlqBkYwJmaeVraZzq7u9D4uAG4QwAAm-oFwaKasEMpIAHSJnjYABnEJyWkZDki5494A3EVqQA):
 
@@ -208,7 +210,7 @@ define(["require", "exports", "react"], function (require, exports, react_1) {
 });
 ```
 
-- Zum Vergleich: Hier kompiliern wir das `èxports` Keyword, dass die Datei als [AMD Module](https://de.wikipedia.org/wiki/Asynchronous_module_definition) importiert werden kann. Diese Modul Spezifikation definiert eine `define` Methode, über welche sich das module registert.
+- Zum Vergleich: Hier kompilieren wir das `èxports` Keyword, dass die Datei als [AMD Module](https://de.wikipedia.org/wiki/Asynchronous_module_definition) importiert werden kann. Diese Modul Spezifikation definiert eine `define` Methode, über welche sich das module registert.
 
 ### Zusammengefasst:
 
@@ -226,7 +228,7 @@ Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versio
 
 [Beispiel im AST Explorer](https://astexplorer.net/#/gist/a8ec04ff57b47fca26bd3ac17c541501/7d34fa678aede151042b5556beff0e86e782de2c)
 
-### Typescript Compilers -Typescript Compiler API
+### Typescript Compilers - Typescript Compiler API
 
 - TypeScript ist eine statisch typisierte Superset-Sprache von JavaScript.
 - Die TypeScript Compiler API ermöglicht die Anpassung und Erweiterung der Entwicklungserfahrung mit TypeScript.
@@ -235,6 +237,7 @@ Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versio
 ### Weitere Beispiele
 
 [Beispiel Svelte](https://astexplorer.net/#/gist/29c57d16d6d16bdd1c6a3849e02da4ad/b440969e83791e4edc8b1ce6e2e11af4d23389dd)
+
 [Beispiel Javascript](https://astexplorer.net/#/gist/1b437b4148e95c08ae43b5e1e0420af4/32c42f1a4887ada1a48ef1eb6f3f0bdb32e54b9a)
 
 - Beispiel enthält diverse Parser (typescript / babel / esprima) sowie diverse "Transformatoren" (recast / jscodeshift) zu denen wir später noch kommen werden
