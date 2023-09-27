@@ -62,6 +62,63 @@ aber nicht:
 
 - "der Mann läuft" (Satzende-Zeichen fehlt)
 
+### Lexer (auch Tokenizer genannt):
+
+> Ein Lexer ist der erste Schritt im Kompilierungsprozess. Er analysiert den Quellcode und zerlegt ihn in Tokens, die die kleinsten syntaktischen Einheiten darstellen. Diese Tokens werden dann an den Parser weitergegeben.
+> Der Lexer erzeugt Tokens gemäß den Syntaxregeln der Sprache. Zum Beispiel werden in JavaScript Variablennamen, Gleichheitszeichen (=) und Zahlen als separate Tokens erkannt.
+
+<figure>
+
+```typescript
+function lexer(inputString) {
+  const tokens = inputString.split(/\s+/); // Zerlegt den String in Tokens
+  return tokens;
+}
+
+const code = "x = 10 + 5";
+const tokens = lexer(code);
+console.log(tokens); // Ausgabe: ["x", "=", "10", "+", "5"]
+```
+
+  <figcaption>Einfacher Lexer für einfache arithmetische Ausdrücke</figcaption>
+</figure>
+
+### Parser
+
+> Ein Parser ist der zweite Schritt im Kompilierungsprozess. Er nimmt die Tokens, die vom Lexer erstellt wurden, und analysiert die syntaktische Struktur des Codes, um einen abstrakten Syntaxbaum (AST) zu erstellen. Ein AST ( ist eine hierarchische Datenstruktur, die die syntaktische Struktur von Quellcode darstellt und von Compilern und Interpretern zur Verarbeitung und Analyse verwendet wird.
+> Dieser Baum repräsentiert die hierarchische Struktur des Codes.
+> Der Parser verwendet die Grammatik der Sprache, um die Tokens in eine hierarchische Struktur (AST) umzuwandeln. Die Grammatik legt fest, wie Anweisungen und Ausdrücke in der Sprache aufgebaut sein müssen, um gültig zu sein.
+
+<figure>
+
+```typescript
+function parseAssignment(tokens) {
+  if (tokens.length < 3 || tokens[1] !== "=") {
+    throw new Error("Ungültige Zuweisung");
+  }
+  return {
+    type: "Assignment",
+    left: tokens[0],
+    right: tokens[2],
+  };
+}
+
+const tokens = ["x", "=", "10"];
+const ast = parseAssignment(tokens);
+console.log(ast); // Ausgabe: { type: "Assignment", left: "x", right: "10" }
+```
+
+  <figcaption>Einfacher Parser für eine Zuweisung</figcaption>
+</figure>
+
+> Unterschiedliche Parser können AST erzeugen die zueinander inkompatibel sind.
+
+Verbreitete Parser:
+
+- [recast](https://github.com/benjamn/recast)
+- [jscodeshift](https://github.com/facebook/jscodeshift)
+- [typescript](https://github.com/microsoft/TypeScript)
+
 ### Compiler:
 
 > Ein Compiler ist ein Programm, das den Quellcode einer höheren Programmiersprache in eine maschinenlesbare Form übersetzt, oft in Maschinencode oder eine andere Zwischensprache. Der Compiler führt typische Aufgaben wie Codeanalyse, Optimierung und Codegenerierung durch.
@@ -152,55 +209,6 @@ define(["require", "exports", "react"], function (require, exports, react_1) {
 ```
 
 - Zum Vergleich: Hier kompiliern wir das `èxports` Keyword, dass die Datei als [AMD Module](https://de.wikipedia.org/wiki/Asynchronous_module_definition) importiert werden kann. Diese Modul Spezifikation definiert eine `define` Methode, über welche sich das module registert.
-
-### Lexer (auch Tokenizer genannt):
-
-    Ein Lexer ist der erste Schritt im Kompilierungsprozess. Er analysiert den Quellcode und zerlegt ihn in Tokens, die die kleinsten syntaktischen Einheiten darstellen. Diese Tokens werden dann an den Parser weitergegeben.
-    Der Lexer erzeugt Tokens gemäß den Syntaxregeln der Sprache. Zum Beispiel werden in JavaScript Variablennamen, Gleichheitszeichen (=) und Zahlen als separate Tokens erkannt.
-
-```typescript
-// Einfacher Lexer für einfache arithmetische Ausdrücke
-function lexer(inputString) {
-  const tokens = inputString.split(/\s+/); // Zerlegt den String in Tokens
-  return tokens;
-}
-
-const code = "x = 10 + 5";
-const tokens = lexer(code);
-console.log(tokens); // Ausgabe: ["x", "=", "10", "+", "5"]
-```
-
-### Parser
-
-> Ein Parser ist der zweite Schritt im Kompilierungsprozess. Er nimmt die Tokens, die vom Lexer erstellt wurden, und analysiert die syntaktische Struktur des Codes, um einen abstrakten Syntaxbaum (AST) zu erstellen. Ein AST ( ist eine hierarchische Datenstruktur, die die syntaktische Struktur von Quellcode darstellt und von Compilern und Interpretern zur Verarbeitung und Analyse verwendet wird.
-> Dieser Baum repräsentiert die hierarchische Struktur des Codes.
-> Der Parser verwendet die Grammatik der Sprache, um die Tokens in eine hierarchische Struktur (AST) umzuwandeln. Die Grammatik legt fest, wie Anweisungen und Ausdrücke in der Sprache aufgebaut sein müssen, um gültig zu sein.
-
-```typescript
-// Einfacher Parser für eine Zuweisung
-function parseAssignment(tokens) {
-  if (tokens.length < 3 || tokens[1] !== "=") {
-    throw new Error("Ungültige Zuweisung");
-  }
-  return {
-    type: "Assignment",
-    left: tokens[0],
-    right: tokens[2],
-  };
-}
-
-const tokens = ["x", "=", "10"];
-const ast = parseAssignment(tokens);
-console.log(ast); // Ausgabe: { type: "Assignment", left: "x", right: "10" }
-```
-
-> Unterschiedliche Parser können AST erzeugen die zueinander inkompatibel sind
-
-Verbreitete Parser:
-
-- recast
-- jscodeshift
-- typescript
 
 ### Zusammengefasst:
 
@@ -315,9 +323,38 @@ https://github.com/coderaiser/putout
 
 ## Fragen und Diskussion
 
-- Haben Sie Fragen oder möchten Sie weitere Informationen zu einem der vorgestellten Anwendungsfälle?
-- Wir stehen zur Verfügung, um Ihre Fragen zu beantworten und weitere Diskussionen zu führen.
+![](https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg)
 
 ## Quellen & Tools
 
-[Tools](./resources.md)
+[Awesome Babel](https://github.com/babel/awesome-babel)
+
+[Awesome TypeScript Compilers, Transpilers and Runtimes](https://github.com/JohnDeved/awesome-typescript-compilers)
+
+[Awesome TypeScript Ecosystem](https://github.com/itsdouges/awesome-typescript-ecosystem)
+
+[github topics ast-transformations](https://github.com/topics/ast-transformations)
+
+[svelte preprocessors](https://github.com/TheComputerM/awesome-svelte#preprocessing)
+
+### Tools
+
+[ts-migrate](https://github.com/airbnb/ts-migrate)
+
+[List of ts-migrate plugins](https://github.com/airbnb/ts-migrate/tree/master/packages/ts-migrate-plugins)
+
+[jscodeshift](https://github.com/facebook/jscodeshift)
+
+[ts-patch](https://github.com/nonara/ts-patch)
+
+[ttypescript](https://github.com/cevek/ttypescript)
+
+[putout](https://github.com/coderaiser/putout)
+
+[putout plugins](https://github.com/coderaiser/putout#-plugins)
+
+### "Eigenwerbung"
+
+[Spring-Boot - like dependency injection & autowiring](https://github.com/7frank/tdi)
+
+[Svelte - GUI Builder](https://github.com/7frank/gui-builder)
