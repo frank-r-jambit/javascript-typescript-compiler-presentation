@@ -157,8 +157,13 @@ https://github.com/facebook/jscodeshift
 - [tdi](https://github.com/7frank/tdi) "Java Spring" - like auto wiring for dependency injection
   - Tool "ttypescript"
 - [gui-builder](https://github.com/7frank/gui-builder) geniereren von adapter
+
   - code zwischen grapesjs und svelte Komponenten
   - Tool: ts-patch
+
+- [typescript-json-schema](https://github.com/YousefED/typescript-json-schema)
+  - https://github.com/YousefED/typescript-json-schema/blob/master/typescript-json-schema.ts
+  - Beispiel wie die compiler api genutzt wird um typinformationen zu extrahieren
 
 ---
 
