@@ -239,26 +239,28 @@ Grammatiken beschreiben den Aufbau von Programmiersprachen. Compiler verwenden L
 
 [Beispiel Recast](https://astexplorer.net/#/gist/1b437b4148e95c08ae43b5e1e0420af4/32c42f1a4887ada1a48ef1eb6f3f0bdb32e54b9a)
 
-- Beispiel enthält diverse Parser (typescript / babel / esprima) sowie diverse "Transformatoren" (recast / jscodeshift) zu denen wir später noch kommen werden
-
 [CSS - PostCss](https://astexplorer.net/#/gist/dcc3e0cb745ab61fc4d27ebc9175e2a4/cc29359d8e49e71359462df80dd05b0cf0627525)
 
 ## Anwendungsszenarien
 
-Im folgenden werden diverse Beispiele gezeigt. Viele der verwendeten Tools haben ähnliche Funktionalität und die Beispiele könnten auf die ein oder andere Weise ähnlich umgesetzt werden.
+Im folgenden besprechen wir, wie man Plugins erzeugen kann die im eigenen Projekt ihre Arbeit verrichten und wie wir dabeiden Compiler als Werkzeug nutzen können. Viele der verwendeten Tools haben ähnliche Funktionalität und die Beispiele könnten auf die ein oder andere Weise ähnlich umgesetzt werden.
 
 ### Code-Transformationen mit Babel
 
-- Die Compiler API ermöglicht Code-Transformationen und Refactoring.
-- Manipulieren Sie den AST, um den Code automatisch anzupassen.
+> Transformationen von Code nutzen wir häufig ohne nes zu wissen schon seit einigen Jahren. Worte die in dem Zusammenhang sicher bekanmnnt sind: `browserlists`, `corejs`, `babel plugins`, `webpack`- Diese ermöglichen uns erst unseren Quellcode zu transformieren und Buidartefakte zu generieren damit diese in verschiendenen Browsern lauffähig sind.
 
-Beispiel: [Logs im Quellcode entfernen.](./examples/code-transformations/README.md)
+Genutztes Tool: [babel](https://github.com/babel/babel)
+
+Beispiele:
+
+- [Logs im Quellcode entfernen.](./examples/code-transformations/README.md)
+- [Check24 Wireframe](./examples//wireframe/README.md)
 
 ### Code Mods mit jscodeshift
 
-- Code Mods sind automatisierte Code-Änderungen und Refactoring.
-- Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug für Code Mods.
-- Automatisieren Sie Aufgaben wie das Aktualisieren von API-Aufrufen oder das Anpassen an Codestandards.
+> Code Mods erlauben automatisiertes Refactoring und Code-Änderungen.
+> Hierdurch ist es möglich ein Projekt auf einen einheitlichen Qualitätsstandard einzuhalten, und auch große Codebases längerfristig aktuell zu halten.
+> Ein Tool welches im Php - Umfeld heraussticht ist [rector](https://github.com/rectorphp/rector). Als Tools die ähnliches im Javascript-Ökosystem versuchen könnte man hier [putout](https://github.com/coderaiser/putout) nennen. Aber auch ohne ein umfängliches Framework können wir selektiv code mods auf unseren quellcode anwenden, und somit bestimmte Refactoring - Aufgaben automatisieren.
 
 Genutztes Tool: [jscodeshift](https://github.com/facebook/jscodeshift)
 
@@ -266,18 +268,14 @@ Beispiel: [Logs im Quellcode entfernen.](./examples/code-mods/README.md)
 
 ### Statische Codeanalyse mit eslint
 
-- Statische Codeanalyse ist ein wichtiger Bestandteil der Softwareentwicklung.
-- Die TypeScript Compiler API ermöglicht die statische Analyse von TypeScript-Code.
-- Durchsuchen Sie den Abstract Syntax Tree (AST), um Code-Metriken, Abhängigkeiten und mehr zu analysieren.
+- Statische Codeanalyse ist ein wichtiger Bestandteil der Softwareentwicklung. Der sogenannte `Linter` ist wichtiger Bestandteil einer CI-CD Pipline, um früh mögliche Fehler zu finden.
 
 Beispiel: [ Logs im Quellcode entfernen.](./examples/statical-code-analysis/README.md)
 
 ### Typüberprüfung und -manipulation
 
-- TypeScript bietet starke Typisierung und Sicherheit.
-- Die Compiler API ermöglicht die Typüberprüfung und -manipulation.
-
-[Using the Compiler API](https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API)
+> TypeScript bietet starke Typisierung und Sicherheit.
+> Die [Typescript Compiler API](https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API) ermöglicht die Typüberprüfung und -manipulation. Im folgenden werden wir ein paar Beispiele betrachten, welche diese nutzen.
 
 - [tdi](https://github.com/7frank/tdi) "Java Spring" - like auto wiring for dependency injection
   - Tool "ttypescript"
@@ -290,32 +288,12 @@ Beispiel: [ Logs im Quellcode entfernen.](./examples/statical-code-analysis/READ
   - https://github.com/YousefED/typescript-json-schema/blob/master/typescript-json-schema.ts
   - Beispiel wie die compiler api genutzt wird um typinformationen zu extrahieren
 
-### Dokumentationserzeugung
-
-- Gute Dokumentation ist entscheidend für die Zusammenarbeit in Teams.
-- Verwenden Sie die Compiler API, um Dokumentation aus Ihrem Code zu generieren.
-- Extrahieren Sie JSDoc-Kommentare, um nützliche Dokumentation für Module, Klassen und Funktionen zu erstellen.
-- Beispiel: Generierung von JSDoc-basierten Dokumentationskommentaren.
-
-<!--
-
-Genutztes Tool:
-https://github.com/coderaiser/putout
-[Beispiele verschiedener Plugin Variationen](https://github.com/coderaiser/putout/tree/master/packages/engine-runner) -->
-
 ### Editor-Erweiterungen
 
 - Verbessern Sie die Entwicklungserfahrung mit Editor-Erweiterungen.
 - Die TypeScript Compiler API kann in Visual Studio Code-Erweiterungen verwendet werden.
 - Fügen Sie benutzerdefinierte Code-Vervollständigung, Fehlermarkierungen und mehr hinzu.
 - [Beispiel](./examples/)
-
-## "Erfolgsgeschichten"
-
-- [Check24 Wireframe](./examples//wireframe/README.md)
-- treeshaking via direkte importe
-
-- Habt ihr welche zu teilen?
 
 ## Zusammenfassung
 
@@ -325,7 +303,8 @@ https://github.com/coderaiser/putout
 
 ## Fragen und Diskussion
 
-![](https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg)
+- Habt ihr selbst Erfahrung mit genannten oder ungenannten Tools?
+- Gerade im Enterpriseumfeld liest man immer wieder von der Migration großer CodeBases. Habt ihr selbst schon Erfolgsgeschichten begleiten können?
 
 ## Quellen & Tools
 
