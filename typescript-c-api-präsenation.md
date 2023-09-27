@@ -184,7 +184,7 @@ https://github.com/coderaiser/putout
 - Verbessern Sie die Entwicklungserfahrung mit Editor-Erweiterungen.
 - Die TypeScript Compiler API kann in Visual Studio Code-Erweiterungen verwendet werden.
 - Fügen Sie benutzerdefinierte Code-Vervollständigung, Fehlermarkierungen und mehr hinzu.
-- Beispiel: Hinzufügen einer benutzerdefinierten Code-Vervollständigung in Visual Studio Code.
+- [Beispiel](./examples/)
 
 ---
 
