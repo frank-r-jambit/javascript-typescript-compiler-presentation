@@ -119,6 +119,7 @@ function greet(name) {
 ```
 
 - ECMAScript 3 kennt kein keyword `exports`. Die [Option "Modules"](https://www.typescriptlang.org/tsconfig#module) in einer tsconfig.json bewirkt daher, dass der Compiler den Code mit der [Module Resolution Strategie](https://www.typescriptlang.org/docs/handbook/module-resolution.html) Commonjs kompiliert.
+- Ebenso kennt EcmaScript kein JSX. Daher muss in der tsconfig.json angegeben werden, [wie der Quellcode](https://www.typescriptlang.org/tsconfig#jsx) übersetzt werden soll.
 
 #### Das selbe Beispiel kompiliert nach ES3 / AMD
 
@@ -149,6 +150,8 @@ define(["require", "exports", "react"], function (require, exports, react_1) {
   }
 });
 ```
+
+- Zum Vergleich: Hier kompiliern wir das `èxports` Keyword, dass die Datei als [AMD Module](https://de.wikipedia.org/wiki/Asynchronous_module_definition) importiert werden kann. Diese Modul Spezifikation definiert eine `define` Methode, über welche sich das module registert.
 
 ### Lexer (auch Tokenizer genannt):
 
