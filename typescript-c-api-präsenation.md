@@ -16,13 +16,13 @@
 - Einblick und Überblick in Compiler und erstellen eigener Tools
 
 - Disclaimer:
-  Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem so volatil ist, daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele die zunächst auch über andere Tools vielleicht sogar einfacher umgesetzt werden könnten, zielt zunächst darauf zugänglich zu sein. Später kommen besprehcen wir noch ein paar Beispiele die ein wenig tiefer in die Materie eingehen.
+  Ich habe mich schwer getan den Fokus des Vortrags zu setzen, da das Ökosystem sehr volatil ist. Daher bietet der erste Teil des Vortrags Grundlagen und einfache Beispiele welche auch über andere Tools, vielleicht sogar einfacher, umgesetzt werden könnten, zielt dabei auf Zugänglichkeit. Gegen Ende besprechen wir noch ein paar Beispiele die tiefer in die Materie eingehen.
 
 ## Begriffsdefinition / Grundlagen
 
 ### Sprache:
 
-        In diesem Zusammenhang bezieht sich die "Sprache" auf die Programmiersprache, in der der Quellcode geschrieben ist. Es handelt sich um die formale oder strukturierte Methode, mit der Entwickler Anweisungen und Befehle formulieren, um Computerprogramme zu erstellen.
+        In unserem Fall bezieht sich die "Sprache" auf die Programmiersprache, in der unser Quellcode geschrieben ist. Es handelt sich um die formale oder strukturierte Methode, mit der Entwickler Anweisungen und Befehle formulieren, um Computerprogramme zu erstellen.
         Jede Programmiersprache hat ihre eigenen Regeln und Konventionen, die bestimmen, wie der Code geschrieben werden sollte. Diese Regeln sind Teil der Sprache, und ein Compiler oder Interpreter muss sie verstehen, um den Code korrekt zu verarbeiten.
 
 ### Grammatik (Syntax):
@@ -32,21 +32,101 @@
 
 ![Einfacher Grammatik in BNF](https://wikimedia.org/api/rest_v1/media/math/render/svg/bbb0b76c69a5acef99da619f0623e4114c5a5eb4)
 
+```bnf
+Sentence ::= Subject Predicate Object '.'
+Subject ::= Article? Noun
+Predicate ::= Verb
+Object ::= Article? Noun
+Article ::= 'der' | 'die' | 'das' | 'ein' | 'eine'
+Noun ::= 'Mann' | 'Frau' | 'Hund' | 'Katze' | 'Auto' | ...
+Verb ::= 'läuft' | 'isst' | 'trinkt' | 'fährt' | ...
+```
+
+Valide Sätze der obigen Grammatik:
+
+- "der Mann läuft ein Auto."
+- "die Hund fährt."
+
+aber nicht:
+
+- "der Mann läuft" (Satzende-Zeichen fehlt)
+
 ### Compiler:
 
 ![typische Bausteine eines Compilers](https://it1.pages.fh-aachen.de/compiler/img/CompilerAblauf.svg)
 
     Ein Compiler ist ein Programm, das den Quellcode einer höheren Programmiersprache in eine maschinenlesbare Form übersetzt, oft in Maschinencode oder eine andere Zwischensprache. Der Compiler führt typische Aufgaben wie Codeanalyse, Optimierung und Codegenerierung durch.
 
+Ein einfaches [React - Typescript Beispiel](https://www.typescriptlang.org/play?target=0&moduleResolution=99&module=2#code/JYWwDg9gTgLgBAJQKYEMDG8BmUIjgIilQ3wCgB6cuAUWADtN0ALJAZ0WJgFoAVATzBIAymijAw8LnABCSYKzDAkAG1KkkAD0iw4pTAFc6GYBDpwA4kSQwAFHRQgkALjisYYugHMAlHADepHBwRDD6UGYAPAB8ABIoysoQADRwACR+9o4AvgCEEeRRpFlqBkYwJmaeVraZzq7u9D4uAG4QwAAm-oFwaKasEMpIAHSJnjYABnEJyWkZDki5494A3EVqQA):
+
 ```typescript
-// Einfaches TypeScript-Programm
+import React from "react";
+
+export function Greet(name: string) {
+  return <>Hallo, ${name}!</>;
+}
+
 function greet(name: string): void {
   console.log(`Hallo, ${name}!`);
 }
+```
 
-// TypeScript-Compiler (JIT Compiler): Übersetzt den Code in JavaScript
-// Der generierte JavaScript-Code wird ausgeführt
-greet("John");
+Das selbe Beispiel kompiliert nach ES3 / CommonJS.
+
+```javascript
+"use strict";
+var __importDefault =
+  (this && this.__importDefault) ||
+  function (mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
+exports.__esModule = true;
+exports.Greet = void 0;
+var react_1 = __importDefault(require("react"));
+// Einfaches React-TypeScript - Beispiel
+function Greet(name) {
+  return react_1["default"].createElement(
+    react_1["default"].Fragment,
+    null,
+    "Hallo, $",
+    name,
+    "!"
+  );
+}
+exports.Greet = Greet;
+function greet(name) {
+  console.log("Hallo, ".concat(name, "!"));
+}
+```
+
+Das selbe Beispiel kompiliert nach ES3 / AMD
+
+```javascript
+var __importDefault =
+  (this && this.__importDefault) ||
+  function (mod) {
+    return mod && mod.__esModule ? mod : { default: mod };
+  };
+define(["require", "exports", "react"], function (require, exports, react_1) {
+  "use strict";
+  exports.__esModule = true;
+  exports.Greet = void 0;
+  react_1 = __importDefault(react_1);
+  // Einfaches React-TypeScript - Beispiel
+  function Greet(name) {
+    return react_1["default"].createElement(
+      react_1["default"].Fragment,
+      null,
+      "Hallo, $",
+      name,
+      "!"
+    );
+  }
+  exports.Greet = Greet;
+  function greet(name) {
+    console.log("Hallo, ".concat(name, "!"));
+  }
+});
 ```
 
 ### Lexer (auch Tokenizer genannt):
@@ -66,11 +146,11 @@ const tokens = lexer(code);
 console.log(tokens); // Ausgabe: ["x", "=", "10", "+", "5"]
 ```
 
-Parser:
+### Parser
 
-    Ein Parser ist der zweite Schritt im Kompilierungsprozess. Er nimmt die Tokens, die vom Lexer erstellt wurden, und analysiert die syntaktische Struktur des Codes, um einen abstrakten Syntaxbaum (AST) zu erstellen. Ein AST ( ist eine hierarchische Datenstruktur, die die syntaktische Struktur von Quellcode darstellt und von Compilern und Interpretern zur Verarbeitung und Analyse verwendet wird.
-    Dieser Baum repräsentiert die hierarchische Struktur des Codes.
-    Der Parser verwendet die Grammatik der Sprache, um die Tokens in eine hierarchische Struktur (AST) umzuwandeln. Die Grammatik legt fest, wie Anweisungen und Ausdrücke in der Sprache aufgebaut sein müssen, um gültig zu sein.
+> Ein Parser ist der zweite Schritt im Kompilierungsprozess. Er nimmt die Tokens, die vom Lexer erstellt wurden, und analysiert die syntaktische Struktur des Codes, um einen abstrakten Syntaxbaum (AST) zu erstellen. Ein AST ( ist eine hierarchische Datenstruktur, die die syntaktische Struktur von Quellcode darstellt und von Compilern und Interpretern zur Verarbeitung und Analyse verwendet wird.
+> Dieser Baum repräsentiert die hierarchische Struktur des Codes.
+> Der Parser verwendet die Grammatik der Sprache, um die Tokens in eine hierarchische Struktur (AST) umzuwandeln. Die Grammatik legt fest, wie Anweisungen und Ausdrücke in der Sprache aufgebaut sein müssen, um gültig zu sein.
 
 ```typescript
 // Einfacher Parser für eine Zuweisung
@@ -90,13 +170,21 @@ const ast = parseAssignment(tokens);
 console.log(ast); // Ausgabe: { type: "Assignment", left: "x", right: "10" }
 ```
 
-Zusammengefasst:
+> Unterschiedliche Parser können AST erzeugen die zueinander inkompatibel sind
+
+Verbreitete Parser:
+
+- recast
+- jscodeshift
+- typescript
+
+### Zusammengefasst:
 
 Grammatiken beschreiben die Syntax von Programmiersprachen. Formale Sprachen sind die Wörter in diesen Sprachen. Compiler verwenden Grammatiken, um den Quellcode zu analysieren und in Maschinen- oder Zwischencode zu übersetzen. Grammatiken und formale Sprachen sind grundlegend für die Übersetzung von Programmcode.
 
 ## Abstract Syntax Tree
 
-    Ein Abstract Syntax Tree (AST) ist eine baumartige Datenstruktur, die die syntaktische Struktur eines Programms repräsentiert. Es enthält abstrakte Informationen über die Anordnung von Codeelementen und dient als Grundlage für die Analyse und Transformation von Quellcode in Compilern und ähnlichen Anwendungen.
+> Ein Abstract Syntax Tree (AST) ist eine baumartige Datenstruktur, die die syntaktische Struktur eines Programms repräsentiert. Es enthält abstrakte Informationen über die Anordnung von Codeelementen und dient als Grundlage für die Analyse und Transformation von Quellcode in Compilern und ähnlichen Anwendungen.
 
 ### Typescript Compilers - Babel
 
