@@ -1,4 +1,4 @@
-# Verbesserung der TypeScript-Entwicklungserfahrung mit der TypeScript Compiler API
+# Verbesserung der TypeScript-Entwicklungserfahrung durch Typescript Compiler
 
 ## Einleitung / Agenda
 
