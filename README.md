@@ -278,7 +278,7 @@ Beispiel: [ Logs im Quellcode entfernen.](./examples/statical-code-analysis/READ
 > Die [Typescript Compiler API](https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API) ermöglicht die Typüberprüfung und -manipulation. Im folgenden werden wir ein paar Beispiele betrachten, welche diese nutzen.
 
 - [tdi](https://github.com/7frank/tdi) "Java Spring" - like auto wiring for dependency injection
-  - Tool "ttypescript"
+  - Tool: [ttypescript](https://github.com/cevek/ttypescript)
 - [gui-builder](https://github.com/7frank/gui-builder) geniereren von adapter
 
   - code zwischen grapesjs und svelte Komponenten
@@ -286,20 +286,22 @@ Beispiel: [ Logs im Quellcode entfernen.](./examples/statical-code-analysis/READ
 
 - [typescript-json-schema](https://github.com/YousefED/typescript-json-schema)
   - https://github.com/YousefED/typescript-json-schema/blob/master/typescript-json-schema.ts
-  - Beispiel wie die compiler api genutzt wird um typinformationen zu extrahieren
+  - Beispiel wie die compiler api genutzt wird um Typinformationen zu extrahieren
 
-### Editor-Erweiterungen
+### IDE-Erweiterungen
 
-- Verbessern Sie die Entwicklungserfahrung mit Editor-Erweiterungen.
-- Die TypeScript Compiler API kann in Visual Studio Code-Erweiterungen verwendet werden.
-- Fügen Sie benutzerdefinierte Code-Vervollständigung, Fehlermarkierungen und mehr hinzu.
-- [Beispiel](./examples/)
+> TypeScript-Compiler kommt auch in den von uns verwendeten Tools zum Einsatz, beispielsweise in Kombination mit einem VSCode-Plugin und ts2zod, das Zod-Schemas aus Typen generiert."
+
+Beispielsweise verwendet das VSCode Plugin
+[zodschema-generator](https://marketplace.visualstudio.com/items?itemName=psulek-solo.zodschema-generator)  
+das Package [ts-to-zod](https://github.com/psulek/vscode-zodschema-generator/blob/main/src/generator.ts#L5C20-L5C26)
+welches die [typescript compiler api ](https://github.com/fabien0102/ts-to-zod/blob/main/src/core/generate.ts#L87C12-L87C12) nutzt
 
 ## Zusammenfassung
 
-- Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug zur Anpassung und Erweiterung der TypeScript-Entwicklung.
-- Sie ermöglicht statische Analyse, Code-Transformationen, Dokumentationserstellung, Typüberprüfung, Code Mods und Editor-Erweiterungen.
-- Die Anwendungsmöglichkeiten sind vielfältig und können die Entwicklungserfahrung erheblich verbessern.
+> Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug zur Anpassung und Erweiterung der TypeScript-Entwicklung.
+> Sie ermöglicht statische Analyse, Code-Transformationen, Dokumentationserstellung, Typüberprüfung, Code Mods und Editor-Erweiterungen.
+> Die Anwendungsmöglichkeiten sind vielfältig und können die Entwicklungserfahrung erheblich verbessern.
 
 ## Fragen und Diskussion
 
