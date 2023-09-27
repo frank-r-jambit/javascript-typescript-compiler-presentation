@@ -129,36 +129,33 @@ Im folgenden werden diverse Beispiele gezeigt. Viele der verwendeten Tools haben
 
 - Die Compiler API ermöglicht Code-Transformationen und Refactoring.
 - Manipulieren Sie den AST, um den Code automatisch anzupassen.
-- [Beispiel: Logs im Quellcode entfernen.](./examples/code-transformations/README.md)
 
----
+Beispiel: [Logs im Quellcode entfernen.](./examples/code-transformations/README.md)
 
-### Code Mods mit jsCodeshift
+### Code Mods mit jscodeshift
 
 - Code Mods sind automatisierte Code-Änderungen und Refactoring.
 - Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug für Code Mods.
 - Automatisieren Sie Aufgaben wie das Aktualisieren von API-Aufrufen oder das Anpassen an Codestandards.
 
-Genutztes Tool:
-https://github.com/facebook/jscodeshift
-[Beispiel: Logs im Quellcode entfernen.](./examples/code-mods/README.md)
+Genutztes Tool: [jscodeshift](https://github.com/facebook/jscodeshift)
 
----
+Beispiel: [Logs im Quellcode entfernen.](./examples/code-mods/README.md)
 
 ### Statische Codeanalyse mit eslint
 
 - Statische Codeanalyse ist ein wichtiger Bestandteil der Softwareentwicklung.
 - Die TypeScript Compiler API ermöglicht die statische Analyse von TypeScript-Code.
 - Durchsuchen Sie den Abstract Syntax Tree (AST), um Code-Metriken, Abhängigkeiten und mehr zu analysieren.
-- [Beispiel: Logs im Quellcode entfernen.](./examples/statical-code-analysis/README.md)
 
----
+Beispiel: [ Logs im Quellcode entfernen.](./examples/statical-code-analysis/README.md)
 
 ### Typüberprüfung und -manipulation
 
 - TypeScript bietet starke Typisierung und Sicherheit.
 - Die Compiler API ermöglicht die Typüberprüfung und -manipulation.
-- Ändern Sie Typen, fügen Sie Typinformationen hinzu und passen Sie Typüberprüfungen an.
+
+[Using the Compiler API](https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API)
 
 - [tdi](https://github.com/7frank/tdi) "Java Spring" - like auto wiring for dependency injection
   - Tool "ttypescript"
@@ -170,8 +167,6 @@ https://github.com/facebook/jscodeshift
 - [typescript-json-schema](https://github.com/YousefED/typescript-json-schema)
   - https://github.com/YousefED/typescript-json-schema/blob/master/typescript-json-schema.ts
   - Beispiel wie die compiler api genutzt wird um typinformationen zu extrahieren
-
----
 
 ### Dokumentationserzeugung
 
@@ -186,18 +181,12 @@ Genutztes Tool:
 https://github.com/coderaiser/putout
 [Beispiele verschiedener Plugin Variationen](https://github.com/coderaiser/putout/tree/master/packages/engine-runner) -->
 
----
-
----
-
 ### Editor-Erweiterungen
 
 - Verbessern Sie die Entwicklungserfahrung mit Editor-Erweiterungen.
 - Die TypeScript Compiler API kann in Visual Studio Code-Erweiterungen verwendet werden.
 - Fügen Sie benutzerdefinierte Code-Vervollständigung, Fehlermarkierungen und mehr hinzu.
 - [Beispiel](./examples/)
-
----
 
 ## "Erfolgsgeschichten"
 
@@ -211,8 +200,6 @@ https://github.com/coderaiser/putout
 - Die TypeScript Compiler API ist ein leistungsstarkes Werkzeug zur Anpassung und Erweiterung der TypeScript-Entwicklung.
 - Sie ermöglicht statische Analyse, Code-Transformationen, Dokumentationserstellung, Typüberprüfung, Code Mods und Editor-Erweiterungen.
 - Die Anwendungsmöglichkeiten sind vielfältig und können die Entwicklungserfahrung erheblich verbessern.
-
----
 
 ## Fragen und Diskussion
 
