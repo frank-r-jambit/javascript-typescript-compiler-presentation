@@ -120,8 +120,6 @@ console.log(ast); // Ausgabe: { type: "Assignment", left: "x", right: "10" }
   <figcaption>Einfacher Parser der eine Variablenzuweisung in einen AST überführt.  Der AST besteht hierbei nur aus einem Knoten.</figcaption>
 </figure>
 
-> Unterschiedliche Parser können AST erzeugen die zueinander inkompatibel sind.
-
 Verbreitete Parser:
 
 - [recast](https://github.com/benjamn/recast)
@@ -210,35 +208,36 @@ define(["require", "exports", "react"], function (require, exports, react_1) {
 });
 ```
 
-- Zum Vergleich: Hier kompilieren wir das `èxports` Keyword, dass die Datei als [AMD Module](https://de.wikipedia.org/wiki/Asynchronous_module_definition) importiert werden kann. Diese Modul Spezifikation definiert eine `define` Methode, über welche sich das module registert.
+- Zum Vergleich: Hier kompilieren wir das `exports` Keyword, dass die Datei als [AMD Module](https://de.wikipedia.org/wiki/Asynchronous_module_definition) importiert werden kann. Diese Modul Spezifikation definiert eine `define` Methode, über welche sich das module registert.
 
 ### Zusammengefasst:
 
-Grammatiken beschreiben die Syntax von Programmiersprachen. Formale Sprachen sind die Wörter in diesen Sprachen. Compiler verwenden Grammatiken, um den Quellcode zu analysieren und in Maschinen- oder Zwischencode zu übersetzen. Grammatiken und formale Sprachen sind grundlegend für die Übersetzung von Programmcode.
+Grammatiken beschreiben den Aufbau von Programmiersprachen. Compiler verwenden Lexer um einen Strom von Zeichen in Token einer Sprach zu übersetzen und Parser um diese Token in eine Baumstruktur zu übberführen, um den Quellcode zu analysieren und in Maschinen- oder Zwischencode zu übersetzen.
 
 ## Abstract Syntax Tree
 
-> Ein Abstract Syntax Tree (AST) ist eine baumartige Datenstruktur, die die syntaktische Struktur eines Programms repräsentiert. Es enthält abstrakte Informationen über die Anordnung von Codeelementen und dient als Grundlage für die Analyse und Transformation von Quellcode in Compilern und ähnlichen Anwendungen.
+> Ein Abstract Syntax Tree (AST) ist eine baumartige Datenstruktur, die die syntaktische Struktur eines Programms repräsentiert. Es enthält abstrakte Informationen über die Anordnung von Codeelementen und dient als Grundlage für die Analyse und Transformation von Quellcode in Compilern und ähnlichen Anwendungen. Unterschiedliche Parser erzteugen unterschiedliche AST die häufig zueinander inkompatibel sind. Wir betrachten im Folgenden erzeugte ASTs und Beispiele dafür eine Transformation auf diesen auszuführen.
 
 ### Typescript Compilers - Babel
 
-Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versionen übersetzt, um die Browserkompatibilität sicherzustellen. Babel verwendet Plugins für spezielle Transformationen, wie das Übersetzen von Arrow Functions, Klassen usw. Diese Plugins sind konfigurierbar und können in Build-Tools integriert werden.
+> Babel ist ein JavaScript-Compiler, der moderne JavaScript-Code in ältere Versionen übersetzt, um die Browserkompatibilität sicherzustellen. Babel verwendet Plugins für spezielle Transformationen, wie das Übersetzen von Arrow Functions, Klassen usw. Diese Plugins sind konfigurierbar und können in Build-Tools integriert werden.
 
 [Beispiel eines einfachen Plugins](https://babeljs.io/docs/plugins#plugin-development)
 
 [Beispiel im AST Explorer](https://astexplorer.net/#/gist/a8ec04ff57b47fca26bd3ac17c541501/7d34fa678aede151042b5556beff0e86e782de2c)
 
-### Typescript Compilers - Typescript Compiler API
+### Typescript - Compilers - Typescript Compiler API
 
-- TypeScript ist eine statisch typisierte Superset-Sprache von JavaScript.
-- Die TypeScript Compiler API ermöglicht die Anpassung und Erweiterung der Entwicklungserfahrung mit TypeScript.
-- In dieser Präsentation werden verschiedene Anwendungsfälle für die TypeScript Compiler API erläutert.
+> TypeScript ist eine statisch typisierte Superset-Sprache von JavaScript.
+> Die TypeScript Compiler API ermöglicht die Anpassung und Erweiterung der Entwicklungserfahrung mit TypeScript.
+
+[Beispiel im AST Explorer](https://astexplorer.net/#/gist/bb0f40895c0cdb2e756464beafbfa0e9/1c513e6bd21aeb14c1d36bf296ab11e13ab1bc9f)
 
 ### Weitere Beispiele
 
 [Beispiel Svelte](https://astexplorer.net/#/gist/29c57d16d6d16bdd1c6a3849e02da4ad/b440969e83791e4edc8b1ce6e2e11af4d23389dd)
 
-[Beispiel Javascript](https://astexplorer.net/#/gist/1b437b4148e95c08ae43b5e1e0420af4/32c42f1a4887ada1a48ef1eb6f3f0bdb32e54b9a)
+[Beispiel Recast](https://astexplorer.net/#/gist/1b437b4148e95c08ae43b5e1e0420af4/32c42f1a4887ada1a48ef1eb6f3f0bdb32e54b9a)
 
 - Beispiel enthält diverse Parser (typescript / babel / esprima) sowie diverse "Transformatoren" (recast / jscodeshift) zu denen wir später noch kommen werden
 
