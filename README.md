@@ -277,11 +277,15 @@ Beispiel: [ Logs im Quellcode entfernen.](./examples/statical-code-analysis/READ
 > Die [Typescript Compiler API](https://github.com/microsoft/TypeScript/wiki/Using-the-Compiler-API) ermöglicht die Typüberprüfung und -manipulation. Im folgenden werden wir ein paar Beispiele betrachten, welche diese nutzen.
 
 - [tdi](https://github.com/7frank/tdi) "Java Spring" - like auto wiring for dependency injection
+
   - Tool: [ttypescript](https://github.com/cevek/ttypescript)
+  - [transformer](https://github.com/frank-r-jambit/tdi/blob/main/transformers/interface-transformer-module.ts)
+
 - [gui-builder](https://github.com/7frank/gui-builder) geniereren von adapter
 
   - code zwischen grapesjs und svelte Komponenten
   - Tool: ts-patch
+  - [transformer](https://github.com/7frank/gui-builder/blob/main/transformers/svelte-component-transformer.ts)
 
 - [typescript-json-schema](https://github.com/YousefED/typescript-json-schema)
   - https://github.com/YousefED/typescript-json-schema/blob/master/typescript-json-schema.ts
